@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>How AI Can Help Your Daily Work — Friederik Ferdinand</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        line-height: 1.65;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container {
+        width: min(1140px, 90vw);
+        margin: 0 auto;
+      }
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid;
+      }
+      .navbar .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+      }
+      .brand .logo-icon {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 1px solid;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .nav-links a {
+        font-size: 14px;
+        padding: 4px 0;
+      }
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        padding: 10px 20px;
+        border: 1px solid;
+      }
+      .article-section {
+        padding-top: 48px;
+        padding-bottom: 80px;
+      }
+      .article-layout {
+        max-width: 860px;
+      }
+      .article-backlink {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+      .article-hero {
+        margin-bottom: 24px;
+      }
+      .article-hero__image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: 1px solid;
+        background-size: cover;
+        background-position: center;
+      }
+      .article-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid;
+      }
+      .article-tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border: 1px solid;
+      }
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+      }
+      .article-meta .dot {
+        width: 4px;
+        height: 4px;
+        display: inline-block;
+      }
+      .article-title {
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+      .article-content {
+        font-size: 16px;
+        line-height: 1.85;
+      }
+      .article-content h2 {
+        font-size: clamp(24px, 3vw, 32px);
+        line-height: 1.2;
+        margin: 36px 0 12px;
+      }
+      .article-content p {
+        margin-top: 14px;
+      }
+      .footer {
+        margin-top: auto;
+        background: #000000;
+        color: #a0a0a0;
+        padding: 48px 0 32px;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+      .footer-brand {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+      }
+      .footer-desc {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 300px;
+        color: #a0a0a0;
+      }
+      .footer-col h4 {
+        font-size: 13px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .footer-col a,
+      .footer-col span {
+        display: block;
+        font-size: 14px;
+        color: #a0a0a0;
+        padding: 4px 0;
+      }
+      .footer-col a:hover {
+        color: #d0d0d0;
+      }
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 0;
+        border: 1px solid #505050;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #a0a0a0;
+      }
+      .footer-social a:hover {
+        background: #d0d0d0;
+        border-color: #d0d0d0;
+        color: #000000;
+      }
+      .footer-bottom {
+        border-top: 1px solid #404040;
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #909090;
+      }
+      .footer-bottom a {
+        color: #909090;
+      }
+      @media (max-width: 960px) {
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+        .nav-links {
+          gap: 20px;
+        }
+      }
+      @media (max-width: 720px) {
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="navbar">
+        <div class="container bar">
+          <a class="brand" href="index.html">
+            <span class="logo-icon"
+              ><span style="font-size: 18px"
+                >💻</span
+              ></span
+            >
+            <span>Friederik Ferdinand</span>
+          </a>
+          <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <a class="nav-cta" href="contact.html">Let's Talk</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="article-section">
+          <div class="container">
+            <div class="article-layout">
+              <a class="article-backlink" href="blog.html">
+                <span style="font-size: 18px"
+                  >←</span
+                >
+                Back to Blog
+              </a>
+
+              <div class="article-hero">
+                <div
+                  class="article-hero__image"
+                  style="
+                    background-image: url(&quot;assets/icon/Article3.png&quot;);
+                  "
+                ></div>
+              </div>
+
+              <div class="article-meta-row">
+                <span class="article-tag">AI</span>
+                <div class="article-meta">
+                  <span>18 Feb 2026</span>
+                  <span class="dot"></span>
+                  <span>6 min read</span>
+                </div>
+              </div>
+
+              <h1 class="article-title">How AI Can Help Your Daily Work</h1>
+
+              <div class="article-content">
+                <p>
+                  Artificial intelligence tools have moved from science labs
+                  into everyday software, and you do not need to be a developer
+                  to benefit from them. Whether you write emails, manage tasks,
+                  create presentations, or do research, there is likely an AI
+                  tool that can handle a portion of that work faster than you
+                  can do it manually — without any coding required.
+                </p>
+
+                <p>
+                  The most accessible entry point is a conversational AI
+                  assistant. These tools can draft emails, summarize long
+                  documents, explain complex topics in plain language, translate
+                  text, write social media captions, generate meeting agendas,
+                  and much more. The key skill is learning to give them clear,
+                  specific instructions — known as prompting — rather than vague
+                  requests.
+                </p>
+
+                <h2>Practical Daily Use Cases</h2>
+
+                <p>
+                  Start with writing assistance. Instead of staring at a blank
+                  page, describe what you want to say and let the AI produce a
+                  rough draft. You then edit and refine rather than write from
+                  scratch — a much faster workflow. For research, ask the AI to
+                  summarize a topic or compare options, then verify the facts
+                  from primary sources before using them professionally.
+                </p>
+
+                <p>
+                  For repetitive tasks, AI can generate templates you use
+                  repeatedly — weekly report formats, client proposal outlines,
+                  onboarding documents. Create a good template once and reuse it
+                  indefinitely. Meeting notes from a transcript can be
+                  summarized in seconds, with action items extracted
+                  automatically.
+                </p>
+
+                <h2>Staying in Control</h2>
+
+                <p>
+                  AI tools work best as a collaborator, not a replacement for
+                  your judgment. Always review AI output critically, especially
+                  for factual claims, numbers, or anything client-facing. AI can
+                  confidently produce incorrect information, so treat its output
+                  as a first draft that needs human verification.
+                </p>
+
+                <p>
+                  Start with one use case — perhaps drafting emails — and build
+                  the habit before expanding to other areas. The goal is to free
+                  up mental bandwidth for work that genuinely requires your
+                  creativity and expertise, while delegating the routine and
+                  repetitive to the machine.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div>
+              <div class="footer-brand">Friederik Ferdinand</div>
+              <p class="footer-desc">
+                Full-stack developer crafting digital experiences with clarity,
+                minimal design, and reliable delivery.
+              </p>
+              <div class="footer-social">
+                <a href="https://instagram.com/friederikferdinandd">IG</a>
+                <a href="https://github.com/kobayashikaitoo">Gh</a>
+                <a href="https://wa.me/085248554916">WA</a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <h4>Pages</h4>
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+              <h4>Services</h4>
+              <span>Web Development</span>
+              <span>Web3 Development</span>
+              <span>Crypto Trading</span>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <a href="mailto:kobayashikaito363@gmail.com"
+                >kobayashikaito363@gmail.com</a
+              >
+              <a href="tel:+6285248554916">+62 852 4855 4916</a>
+              <span>Manado, Indonesia</span>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 Friederik Ferdinand. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

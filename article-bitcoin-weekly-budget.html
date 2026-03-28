@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>
+      Start Bitcoin with a Small Weekly Budget — Friederik Ferdinand
+    </title>
+    <style>
+      /* SKELETON CSS - PURE STRUCTURAL LAYOUT ONLY */
+
+      /* Reset */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.65;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      /* LAYOUT */
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: min(1140px, 90vw);
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid;
+      }
+
+      .navbar .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+      }
+
+      .brand .logo-icon {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 1px solid;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        padding: 4px 0;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        padding: 10px 20px;
+        border: 1px solid;
+      }
+
+      /* Article */
+      .article-section {
+        padding-top: 48px;
+        padding-bottom: 80px;
+      }
+
+      .article-layout {
+        max-width: 860px;
+      }
+
+      .article-backlink {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        font-size: 14px;
+      }
+
+      .article-hero {
+        margin-bottom: 24px;
+      }
+
+      .article-hero__image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: 1px solid;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .article-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid;
+      }
+
+      .article-tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border: 1px solid;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .article-meta .dot {
+        width: 4px;
+        height: 4px;
+        display: inline-block;
+      }
+
+      .article-title {
+        font-size: clamp(28px, 4vw, 44px);
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+
+      .article-content {
+        font-size: 16px;
+        line-height: 1.85;
+      }
+
+      .article-content h2 {
+        font-size: clamp(24px, 3vw, 32px);
+        line-height: 1.2;
+        margin: 36px 0 12px;
+      }
+
+      .article-content p {
+        margin-top: 14px;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: auto;
+        padding: 48px 0 32px;
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .footer-desc {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 300px;
+      }
+
+      .footer-col h4 {
+        font-size: 13px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .footer-col a,
+      .footer-col span {
+        display: block;
+        font-size: 14px;
+        padding: 4px 0;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        border: 1px solid;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid;
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 960px) {
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="navbar">
+        <div class="container bar">
+          <a class="brand" href="index.html">
+            <span class="logo-icon"
+              ><span style="font-size: 18px"
+                >💻</span
+              ></span
+            >
+            <span>Friederik Ferdinand</span>
+          </a>
+          <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <a class="nav-cta" href="contact.html">Let's Talk</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="article-section">
+          <div class="container">
+            <div class="article-layout">
+              <a class="article-backlink" href="blog.html">
+                <span style="font-size: 18px"
+                  >←</span
+                >
+                Back to Blog
+              </a>
+
+              <div class="article-hero">
+                <div
+                  class="article-hero__image"
+                  style="
+                    background-image: url(&quot;assets/icon/Article1.png&quot;);
+                  "
+                ></div>
+              </div>
+
+              <div class="article-meta-row">
+                <span class="article-tag">Bitcoin</span>
+                <div class="article-meta">
+                  <span>05 Mar 2026</span>
+                  <span class="dot"></span>
+                  <span>5 min read</span>
+                </div>
+              </div>
+
+              <h1 class="article-title">
+                Start Bitcoin with a Small Weekly Budget
+              </h1>
+
+              <div class="article-content">
+                <p>
+                  Getting started with Bitcoin does not require a large sum of
+                  money. In fact, one of the smartest ways to build a position
+                  in Bitcoin is through Dollar Cost Averaging (DCA) — a strategy
+                  where you buy a fixed amount at regular intervals, regardless
+                  of the current price. This removes the pressure of timing the
+                  market and reduces the emotional burden of watching prices
+                  fluctuate.
+                </p>
+
+                <p>
+                  For example, setting aside a small amount from your weekly
+                  budget — say the equivalent of a few coffee runs — and
+                  converting it to Bitcoin every Friday can compound
+                  meaningfully over a year. Because Bitcoin is divisible to
+                  eight decimal places (one unit is called a Satoshi), you can
+                  own a meaningful fraction of a Bitcoin even with a modest
+                  budget.
+                </p>
+
+                <h2>Choosing a Platform</h2>
+
+                <p>
+                  Pick a regulated exchange that supports recurring purchases
+                  and low fees for small amounts. Make sure it offers two-factor
+                  authentication and withdrawal to a personal wallet once your
+                  balance grows. Popular options include exchanges with
+                  automatic weekly purchase features, which take the
+                  decision-making out of your hands completely.
+                </p>
+
+                <p>
+                  Once you own Bitcoin on an exchange, consider moving it to a
+                  hardware wallet or a non-custodial wallet once your stash
+                  exceeds a value you are comfortable leaving online. The phrase
+                  "not your keys, not your coins" is a foundational principle in
+                  the Bitcoin community and worth taking seriously from the
+                  start.
+                </p>
+
+                <h2>Staying Calm During Volatility</h2>
+
+                <p>
+                  Price swings of 10–30% in either direction are normal for
+                  Bitcoin. The weekly DCA approach helps psychologically because
+                  you are buying both at highs and at lows, which averages out
+                  over time. The worst thing a beginner can do is panic-sell
+                  during a dip. Set a reminder to check your stack no more than
+                  once a month — daily price watching leads to emotional
+                  decisions that rarely end well.
+                </p>
+
+                <p>
+                  Starting small also means your potential loss is limited while
+                  you learn. As you grow in confidence and understanding, you
+                  can always increase, decrease, or pause your weekly purchases.
+                  The key is to begin — even with the smallest amount your
+                  budget allows.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div>
+              <div class="footer-brand">Friederik Ferdinand</div>
+              <p class="footer-desc">
+                Full-stack developer crafting digital experiences with clarity,
+                minimal design, and reliable delivery.
+              </p>
+              <div class="footer-social">
+                <a href="https://instagram.com/friederikferdinandd">IG</a>
+                <a href="https://github.com/kobayashikaitoo">Gh</a>
+                <a href="https://wa.me/085248554916">WA</a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <h4>Pages</h4>
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+              <h4>Services</h4>
+              <span>Web Development</span>
+              <span>Web3 Development</span>
+              <span>Crypto Trading</span>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <a href="mailto:kobayashikaito363@gmail.com"
+                >kobayashikaito363@gmail.com</a
+              >
+              <a href="tel:+6285248554916">+62 852 4855 4916</a>
+              <span>Manado, Indonesia</span>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 Friederik Ferdinand. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

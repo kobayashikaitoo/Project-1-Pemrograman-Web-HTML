@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>About — Friederik Ferdinand</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.65;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      /* LAYOUT */
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: min(1140px, 90vw);
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section--smoke {
+        border: 1px solid;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .section-subtitle {
+        font-size: 16px;
+        max-width: 560px;
+        line-height: 1.7;
+      }
+
+      .section-label {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid;
+      }
+
+      .navbar .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+      }
+
+      .brand .logo-icon {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 1px solid;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        padding: 4px 0;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        padding: 10px 20px;
+        border: 1px solid;
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 14px;
+        padding: 13px 28px;
+        border: 1px solid;
+        cursor: pointer;
+      }
+
+      .btn-outline {
+        border: 1px solid;
+      }
+
+      .btn-sage {
+        border: 1px solid;
+      }
+
+      /* ABOUT SECTION */
+      .about-section {
+        padding-top: 120px;
+      }
+
+      .about-intro {
+        display: grid;
+        grid-template-columns: 5fr 6fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .about-img {
+        position: relative;
+      }
+
+      .about-img img {
+        display: block;
+        width: 100%;
+        max-width: 480px;
+        position: relative;
+        z-index: 1;
+        border: 1px solid;
+      }
+
+      .about-img-accent {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 55%;
+        height: 55%;
+        z-index: 0;
+        border: 1px solid;
+      }
+
+      .about-heading {
+        font-size: clamp(36px, 5vw, 56px);
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+
+      .about-subtitle {
+        font-size: 16px;
+        margin-bottom: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      .about-lead {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 24px;
+      }
+
+      .about-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 16px 0;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+      }
+
+      .skill-label {
+        font-size: 14px;
+        margin-right: 8px;
+      }
+
+      .skill-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+      }
+
+      .skill-check {
+        font-size: 18px;
+      }
+
+      .about-desc {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 32px;
+      }
+
+      .about-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      /* TIMELINE */
+      .htimeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+
+      .htimeline-item {
+        border-top: 1px solid;
+        padding-top: 20px;
+      }
+
+      .ht-label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .ht-year {
+        font-size: clamp(40px, 5vw, 64px);
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+
+      .ht-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .ht-desc {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      /* CTA BANNER */
+      .cta-banner {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-banner .section-title {
+      }
+
+      .cta-banner .section-subtitle {
+        margin: 0 auto 32px;
+      }
+
+      .cta-banner .btn-sage {
+        font-size: 15px;
+        padding: 15px 36px;
+      }
+
+      /* FOOTER */
+      .footer {
+        margin-top: auto;
+        padding: 48px 0 32px;
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-brand {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .footer-desc {
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 300px;
+      }
+
+      .footer-col h4 {
+        font-size: 13px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .footer-col a,
+      .footer-col span {
+        display: block;
+        font-size: 14px;
+        padding: 4px 0;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        border: 1px solid;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid;
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 960px) {
+        .about-intro {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .htimeline {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .section {
+          padding: 56px 0;
+        }
+
+        .htimeline {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="navbar">
+        <div class="container bar">
+          <a class="brand" href="index.html">
+            <span class="logo-icon"
+              ><span style="font-size: 18px"
+                >💻</span
+              ></span
+            >
+            <span>Friederik Ferdinand</span>
+          </a>
+          <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <a class="nav-cta" href="contact.html">Let's Talk</a>
+        </div>
+      </header>
+
+      <main>
+        <!-- About Intro -->
+        <section class="section about-section">
+          <div class="container about-intro">
+            <div class="about-img">
+              <img src="assets/img/Bocchi.jpg" alt="Portrait" />
+              <div class="about-img-accent"></div>
+            </div>
+            <div class="about-text">
+              <h1 class="about-heading">A Few Words<br />About Me</h1>
+              <p class="about-subtitle">
+                <strong>Development driven by innovations</strong> —
+              </p>
+              <p class="about-lead">
+                I'm a full-stack developer and web enthusiast based in Manado,
+                Indonesia. I specialize in building modern web applications with
+                clean code and minimal design.
+              </p>
+              <div class="about-skills">
+                <span class="skill-label">I'm good at:</span>
+                <span class="skill-item"
+                  ><span class="skill-check"
+                    >✓</span
+                  >
+                  Web Development</span
+                >
+                <span class="skill-item"
+                  ><span class="skill-check"
+                    >✓</span
+                  >
+                  Web3 &amp; dApps</span
+                >
+                <span class="skill-item"
+                  ><span class="skill-check"
+                    >✓</span
+                  >
+                  Crypto Trading</span
+                >
+                <span class="skill-item"
+                  ><span class="skill-check"
+                    >✓</span
+                  >
+                  Problem Solving</span
+                >
+              </div>
+              <p class="about-desc">
+                I specialize in full-stack web development for responsive,
+                accessible, and performant applications. I also provide
+                additional expertise in Web3 integrations, and crypto market
+                analysis. If you like what I do, contact me to discuss our next
+                great project!
+              </p>
+              <div class="about-actions">
+                <a class="btn btn-outline" href="gallery.html">Portfolio</a>
+                <a class="btn btn-outline" href="#">Download CV</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="section section--smoke">
+          <div class="container">
+            <div class="htimeline">
+              <div class="htimeline-item">
+                <p class="ht-label">01 \ First Project</p>
+                <p class="ht-year">2022</p>
+                <h3 class="ht-title">Front-End Developer —</h3>
+                <p class="ht-desc">
+                  Built marketing pages and responsive dashboards, refactored
+                  legacy CSS into components, and lifted page-performance
+                  scores.
+                </p>
+              </div>
+              <div class="htimeline-item">
+                <p class="ht-label">02 \ Upgrade</p>
+                <p class="ht-year">2023</p>
+                <h3 class="ht-title">Full-Stack Developer —</h3>
+                <p class="ht-desc">
+                  Transitioned to full-stack development, gaining experience in
+                  both front-end and back-end technologies.
+                </p>
+              </div>
+              <div class="htimeline-item">
+                <p class="ht-label">03 \ Education</p>
+                <p class="ht-year">2024</p>
+                <h3 class="ht-title">
+                  Start college in Sam Ratulangi University —
+                </h3>
+                <p class="ht-desc">
+                  Began studying Informatics at university, building a strong
+                  foundation in computer science and web technologies.
+                </p>
+              </div>
+              <div class="htimeline-item">
+                <p class="ht-label">04 \ Trading</p>
+                <p class="ht-year">2025</p>
+                <h3 class="ht-title">Funded Trader —</h3>
+                <p class="ht-desc">
+                  Ran funded-account strategies at The5ers with strict risk
+                  limits, automated journaling, and steady equity growth.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-banner">
+          <div class="container">
+            <h2 class="section-title">Want to work together?</h2>
+            <p class="section-subtitle">
+              I'm always open to discussing new projects and creative ideas.
+            </p>
+            <a class="btn btn-sage" href="contact.html">Contact Me</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-inner">
+            <div>
+              <div class="footer-brand">Friederik Ferdinand</div>
+              <p class="footer-desc">
+                Full-stack developer crafting digital experiences with clarity,
+                minimal design, and reliable delivery.
+              </p>
+              <div class="footer-social">
+                <a href="https://instagram.com/friederikferdinandd">IG</a>
+                <a href="https://github.com/kobayashikaitoo">Gh</a>
+                <a href="https://wa.me/085248554916">WA</a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <h4>Pages</h4>
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+              <h4>Services</h4>
+              <span>Web Development</span>
+              <span>Web3 Development</span>
+              <span>Crypto Trading</span>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <a href="mailto:kobayashikaito363@gmail.com"
+                >kobayashikaito363@gmail.com</a
+              >
+              <a href="tel:+6285248554916">+62 852 4855 4916</a>
+              <span>Manado, Indonesia</span>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>&copy; 2026 Friederik Ferdinand. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
